@@ -41,12 +41,11 @@ const ContactCard = ({id, style, name, img}: ContactCardProps) => {
         const blackColor = ((cardMargin - 50) >= 99)? 99 : cardMargin - 50 
         if(blackColor < 0 && blackColor < -50) return 'rgba(255, 255, 255, 0.6)'
         if(blackColor === -50) return 
-        // console.log(cardMargin)
         return `linear-gradient(250deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.${blackColor/10}) 100%)`
     }
 
     return (
-        <div onMouseUp={() => {if(cardMargin >= 150) {dispatch(DeleteContact(id+1))}}} onMouseDown={e => {checkDivClick(e)}} ref={card} style={{marginLeft: `-${cardMargin}px`, background: returnBackGround()}} className={style}>
+        <div onMouseUp={() => {if(cardMargin >= 150) dispatch(DeleteContact(id+1))}} onMouseDown={e => checkDivClick(e)} ref={card} style={{marginLeft: `-${cardMargin}px`, background: returnBackGround()}} className={style}>
             {returnImg(img, name)}
             <div>{name}</div>
             <div></div>

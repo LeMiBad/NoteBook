@@ -1,10 +1,10 @@
-// import css from './ContactInfo.module.sass'
+import css from './ContactInfo.module.sass'
 
 const ContactInfo = () => {
     return (
-        <>
-        <div></div>
-        </>
+        <div className={css.wrapper}>
+            <div>Выберите контакт</div>
+        </div>
     )
 }
 

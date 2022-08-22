@@ -1,10 +1,11 @@
-// import ContactInfo from '../ContactInfo/ContactInfo'
+import ContactInfo from '../ContactInfo/ContactInfo'
 import { Navigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import { userSlice } from '../../store/reducers/UserSlice'
 import CreateContact from '../CreateContact/CreateContact'
 import ContactCard from './ContactCard'
 import css from './ContactsPage.module.sass'
+import { useState } from 'react'
 
 const ContactsPage = () => {
 
@@ -12,6 +13,13 @@ const ContactsPage = () => {
     const {UnAuth} = userSlice.actions
     const {isAuth, currentUserData} = useAppSelector(state => state.userReducer)
 
+
+    const [contactInfoItem, setContactInfoItem] = useState(0)
+
+    const returnContactInfo = () => {
+        if(contactInfoItem === 0) return <ContactInfo/>
+        if(contactInfoItem === 1) return <CreateContact/>
+    }
 
     if(isAuth === false) return <Navigate to={'/'}/>
     return (
@@ -23,15 +31,14 @@ const ContactsPage = () => {
                     </div>
                     <div className={css.buttonWrapper}>
                         <button onClick={() => {dispatch(UnAuth())}}>Выйти</button>
-                        <button>Добавить</button>
+                        <button onClick={() => setContactInfoItem(1)}>Добавить</button>
                     </div>
                     <div className={css.contactsItemWrapper}>
                         {currentUserData.contacts?.map(((item, index) => <ContactCard key={index} id={index} style={css.contact} name={`${item.name} (${item.job})`} img={item.img}/>))}
                     </div>
                 </div>
                 <div className={css.contactsInfo}>
-                    <CreateContact/>
-                    {/* <ContactInfo/> */}
+                    {returnContactInfo()}
                 </div>
             </div>
         </div>
