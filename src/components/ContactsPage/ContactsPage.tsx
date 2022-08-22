@@ -5,20 +5,17 @@ import { userSlice } from '../../store/reducers/UserSlice'
 import CreateContact from '../CreateContact/CreateContact'
 import ContactCard from './ContactCard'
 import css from './ContactsPage.module.sass'
-import { useState } from 'react'
 
 const ContactsPage = () => {
 
     const dispatch = useAppDispatch()
-    const {UnAuth} = userSlice.actions
-    const {isAuth, currentUserData} = useAppSelector(state => state.userReducer)
+    const {UnAuth, ChangeContactInfoState} = userSlice.actions
+    const {isAuth, currentUserData, contactInfoState} = useAppSelector(state => state.userReducer)
 
-
-    const [contactInfoItem, setContactInfoItem] = useState(0)
 
     const returnContactInfo = () => {
-        if(contactInfoItem === 0) return <ContactInfo/>
-        if(contactInfoItem === 1) return <CreateContact/>
+        if(contactInfoState === 0) return <ContactInfo/>
+        if(contactInfoState === 1) return <CreateContact/>
     }
 
     if(isAuth === false) return <Navigate to={'/'}/>
@@ -31,7 +28,7 @@ const ContactsPage = () => {
                     </div>
                     <div className={css.buttonWrapper}>
                         <button onClick={() => {dispatch(UnAuth())}}>Выйти</button>
-                        <button onClick={() => setContactInfoItem(1)}>Добавить</button>
+                        <button onClick={() => {dispatch(ChangeContactInfoState(1))}}>Добавить</button>
                     </div>
                     <div className={css.contactsItemWrapper}>
                         {currentUserData.contacts?.map(((item, index) => <ContactCard key={index} id={index} style={css.contact} name={`${item.name} (${item.job})`} img={item.img}/>))}

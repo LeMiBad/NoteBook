@@ -21,3 +21,4 @@ export interface UserData {
     contacts?: Array<Contact>
     id: number
 }
+

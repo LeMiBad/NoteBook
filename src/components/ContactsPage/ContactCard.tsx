@@ -26,9 +26,7 @@ const ContactCard = ({id, style, name, img}: ContactCardProps) => {
 
     
     const checkDivClick = (downEvent: React.MouseEvent<HTMLDivElement>) => {
-        const mouseMoveChecker = (e: MouseEvent) => {
-            setCardMargin(downEvent.clientX - e.clientX)
-        }
+        const mouseMoveChecker = (e: MouseEvent) => setCardMargin(downEvent.clientX - e.clientX)
 
         window.addEventListener('mousemove', mouseMoveChecker)
         window.addEventListener('mouseup', () => {

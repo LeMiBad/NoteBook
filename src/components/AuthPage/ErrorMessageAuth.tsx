@@ -1,15 +1,15 @@
 import { FC } from 'react'
 import css from './AuthPage.module.sass'
 
-interface ErrorMessageProps{
+interface ErrorMessageAuthProps{
     isAuth: boolean | Array<number>
 } 
 
-const ErrorMessage: FC<ErrorMessageProps> = ({isAuth}) => {
+const ErrorMessageAuth: FC<ErrorMessageAuthProps> = ({isAuth}) => {
     if (isAuth === false) return <></>
 
-    const returnErrorMessage = (variant: Array<number> | boolean) => {
-        if(typeof(variant) !== 'boolean' && variant[0] === 1 && variant[1] === 0) return 'Неверно введён пароль'
+    const returnErrorMessage = () => {
+        if(typeof(isAuth) !== 'boolean' && isAuth[0] === 1 && isAuth[1] === 0) return 'Неверно введён пароль'
         return 'Такого пользователя не существует'
     }
 
@@ -17,10 +17,10 @@ const ErrorMessage: FC<ErrorMessageProps> = ({isAuth}) => {
         <>
             <div className={css.errorBlock}>
                 <div className={css.errorName}>Ошибка</div>
-                <div className={css.errorText}>{returnErrorMessage(isAuth)}</div>
+                <div className={css.errorText}>{returnErrorMessage()}</div>
             </div>
         </>
     )
 }
 
-export default ErrorMessage
+export default ErrorMessageAuth

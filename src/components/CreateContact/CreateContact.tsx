@@ -7,7 +7,7 @@ const CreateContact = () => {
 
     const {currentUserData} = useAppSelector(state => state.userReducer)
     const dispatch = useAppDispatch()
-    const {CreateContact} = userSlice.actions
+    const {CreateContact, ChangeContactInfoState} = userSlice.actions
 
     const name = useRef() as MutableRefObject<HTMLInputElement>
     const surname = useRef() as MutableRefObject<HTMLInputElement>
@@ -21,6 +21,12 @@ const CreateContact = () => {
     const tg = useRef() as MutableRefObject<HTMLInputElement>
     const git = useRef() as MutableRefObject<HTMLInputElement>
 
+
+    const phoneMask = (e: any) => {
+        const regex = /(\d?)(\d{3})(\d{3})(\d{2})(\d{2})/g;
+        const subst = "+$1 ($2) $3-$4-$5";
+        e.target.value = e.target.value.replace(regex, subst)
+    }
 
     const createContact = () => {
         const newContact = {
@@ -50,7 +56,7 @@ const CreateContact = () => {
             </div>
             <div className={css.inputWrapper}>
                 <input ref={mail} placeholder='Почта' />
-                <input ref={phone} placeholder='Номер' />
+                <input onBlur={phoneMask} ref={phone} placeholder='Номер' />
                 <input ref={job} placeholder='Проффесия' />
                 <input ref={jobPlace} placeholder='Место работы' />
                 <input ref={img} placeholder='Аватарка (ссылка на картинку)' />
@@ -61,7 +67,7 @@ const CreateContact = () => {
                 <input ref={git} placeholder='GitHub' />
             </div>
             <div className={css.actionButtonWrapper}>
-                <button>Отмена</button>
+                <button onClick={() => {dispatch(ChangeContactInfoState(0))}}>Отмена</button>
                 <button>Добавить поле</button>
                 <button onClick={createContact}>Сохранить</button>
             </div>
