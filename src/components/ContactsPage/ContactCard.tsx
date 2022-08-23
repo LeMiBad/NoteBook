@@ -8,21 +8,26 @@ interface ContactCardProps {
     style: string
     name: string
     img: string
+    job: string
 }
 
-const ContactCard = ({id, style, name, img}: ContactCardProps) => {
+const ContactCard = ({id, style, name, job, img}: ContactCardProps) => {
     const returnImg = (img: string, name: string) => {
         if(img === '') return <div className={css.icon}>{name[0]}</div>
         return <img src={img} alt="" />
     }
 
+    const returnShortName = () => {
+        if(name === '') name = 'Безимянный'
+        if(job === '') return name
+        return `${name} (${job})`   
+    }
 
     const dispatch = useAppDispatch()
-    const {DeleteContact} = userSlice.actions
+    const {deleteContact} = userSlice.actions
 
     const [cardMargin, setCardMargin] = useState(0)
     const card = useRef() as MutableRefObject<HTMLDivElement>
-
 
     
     const checkDivClick = (downEvent: React.MouseEvent<HTMLDivElement>) => {
@@ -43,9 +48,9 @@ const ContactCard = ({id, style, name, img}: ContactCardProps) => {
     }
 
     return (
-        <div onMouseUp={() => {if(cardMargin >= 150) dispatch(DeleteContact(id+1))}} onMouseDown={e => checkDivClick(e)} ref={card} style={{marginLeft: `-${cardMargin}px`, background: returnBackGround()}} className={style}>
+        <div onMouseUp={() => {if(cardMargin >= 150) dispatch(deleteContact(id+1))}} onMouseDown={e => checkDivClick(e)} ref={card} style={{marginLeft: `-${cardMargin}px`, background: returnBackGround()}} className={style}>
             {returnImg(img, name)}
-            <div>{name}</div>
+            <div>{returnShortName()}</div>
             <div></div>
         </div>
     )

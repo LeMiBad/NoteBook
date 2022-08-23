@@ -10,7 +10,7 @@ const ErrorMessageAuth: FC<ErrorMessageAuthProps> = ({isAuth}) => {
 
     const returnErrorMessage = () => {
         if(typeof(isAuth) !== 'boolean' && isAuth[0] === 1 && isAuth[1] === 0) return 'Неверно введён пароль'
-        return 'Такого пользователя не существует'
+        if(typeof(isAuth) !== 'boolean' && isAuth[0] === 0 && isAuth[1] === 1) return 'Такого пользователя не существует'
     }
 
     return (

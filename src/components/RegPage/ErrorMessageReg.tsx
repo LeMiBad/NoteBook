@@ -1,12 +1,12 @@
 import { FC } from 'react'
-import css from './AuthPage.module.sass'
+import css from './../AuthPage/AuthPage.module.sass'
 
 interface ErrorMessageRegProps{
     isReg: boolean | Array<number>
 } 
 
 const ErrorMessageReg: FC<ErrorMessageRegProps> = ({isReg}) => {
-    if (isReg === false) return <></>
+    if (isReg === false || isReg === true) return <></>
 
     const returnErrorMessage = () => {
         if(typeof(isReg) !== 'boolean' && isReg[0] === 2) return 'Такой логин занят'

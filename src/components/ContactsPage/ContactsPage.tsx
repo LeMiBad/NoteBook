@@ -9,7 +9,7 @@ import css from './ContactsPage.module.sass'
 const ContactsPage = () => {
 
     const dispatch = useAppDispatch()
-    const {UnAuth, ChangeContactInfoState} = userSlice.actions
+    const {unAuth,changeContactInfoState} = userSlice.actions
     const {isAuth, currentUserData, contactInfoState} = useAppSelector(state => state.userReducer)
 
 
@@ -27,11 +27,11 @@ const ContactsPage = () => {
                         <input placeholder='Поиск'/>
                     </div>
                     <div className={css.buttonWrapper}>
-                        <button onClick={() => {dispatch(UnAuth())}}>Выйти</button>
-                        <button onClick={() => {dispatch(ChangeContactInfoState(1))}}>Добавить</button>
+                        <button onClick={() => {dispatch(unAuth())}}>Выйти</button>
+                        <button onClick={() => {dispatch(changeContactInfoState(1))}}>Добавить</button>
                     </div>
                     <div className={css.contactsItemWrapper}>
-                        {currentUserData.contacts?.map(((item, index) => <ContactCard key={index} id={index} style={css.contact} name={`${item.name} (${item.job})`} img={item.img}/>))}
+                        {currentUserData.contacts?.map(((item, index) => <ContactCard key={index} id={index} style={css.contact} name={item.name} job={item.job} img={item.img}/>))}
                     </div>
                 </div>
                 <div className={css.contactsInfo}>

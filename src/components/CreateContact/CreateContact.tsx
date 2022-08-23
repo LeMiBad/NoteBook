@@ -7,7 +7,7 @@ const CreateContact = () => {
 
     const {currentUserData} = useAppSelector(state => state.userReducer)
     const dispatch = useAppDispatch()
-    const {CreateContact, ChangeContactInfoState} = userSlice.actions
+    const {createContact, changeContactInfoState} = userSlice.actions
 
     const name = useRef() as MutableRefObject<HTMLInputElement>
     const surname = useRef() as MutableRefObject<HTMLInputElement>
@@ -28,7 +28,7 @@ const CreateContact = () => {
         e.target.value = e.target.value.replace(regex, subst)
     }
 
-    const createContact = () => {
+    const createNewContact = () => {
         const newContact = {
             id: currentUserData.contacts?.length,
             name: name.current.value,
@@ -43,7 +43,7 @@ const CreateContact = () => {
             tg: tg.current.value,
             git: git.current.value
         }
-        dispatch(CreateContact(newContact))
+        dispatch(createContact(newContact))
         console.log(currentUserData)
     }
 
@@ -67,9 +67,8 @@ const CreateContact = () => {
                 <input ref={git} placeholder='GitHub' />
             </div>
             <div className={css.actionButtonWrapper}>
-                <button onClick={() => {dispatch(ChangeContactInfoState(0))}}>Отмена</button>
-                <button>Добавить поле</button>
-                <button onClick={createContact}>Сохранить</button>
+                <button onClick={() => {dispatch(changeContactInfoState(0))}}>Отмена</button>
+                <button onClick={createNewContact}>Сохранить</button>
             </div>
         </>
     )
