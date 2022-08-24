@@ -13,7 +13,7 @@ const ContactCard = ({id, style, name, job, img}: ContactCardProps) => {
     const returnShortName = () => {
         if(name === '') name = 'Безимянный'
         if(job === '') return name
-        return `${name} (${job})`   
+        return `${name} (${job})`
     }
 
     const dispatch = useAppDispatch()
