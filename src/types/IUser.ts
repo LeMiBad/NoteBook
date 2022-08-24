@@ -4,7 +4,7 @@ export interface UserAuth {
     password: string
 }
 
-interface Contact {
+export interface Contact {
     id: number
     img: string
     name: string
@@ -15,6 +15,9 @@ interface Contact {
     status: string
     job: string
     jobPlace: string
+    vk: string
+    tg: string
+    git: string
 }
 
 export interface UserData {
@@ -22,3 +25,10 @@ export interface UserData {
     id: number
 }
 
+export interface ContactCardProps {
+    id: number
+    style: string
+    name: string
+    img: string
+    job: string
+}

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import axios from "axios"
-import { UserAuth, UserData } from "../../types/IUser"
+import { UserAuth, UserData, } from "../../types/IUser"
 
 interface UserState {
     usersAuthData: Array<UserAuth>
@@ -9,15 +9,17 @@ interface UserState {
     currentUserData: UserData
     currentUserId: number
     contactInfoState: number
+    currentPickedContact: number
 }
 
 const initialState: UserState = {
     usersAuthData: [],
     isAuth: false,
     isReg: false,
-    currentUserData: {id: 0},
+    currentUserData: {id: 0, contacts: []},
     currentUserId: 0,
-    contactInfoState: 0
+    contactInfoState: 0,
+    currentPickedContact: 0
 }
 
 export const userSlice = createSlice({
@@ -32,6 +34,9 @@ export const userSlice = createSlice({
         },
         setCurrentUserData(state, action: PayloadAction<UserData>) {
             state.currentUserData = action.payload
+        },
+        setCurrentPickedContact(state, action) {
+            state.currentPickedContact = action.payload+1
         },
         unAuth(state){
             state.isAuth = false

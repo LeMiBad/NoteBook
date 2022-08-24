@@ -2,14 +2,7 @@ import { useRef, MutableRefObject, useState } from 'react'
 import { useAppDispatch } from '../../hooks/redux'
 import { userSlice } from '../../store/reducers/UserSlice'
 import css from './ContactsPage.module.sass'
-
-interface ContactCardProps {
-    id: number
-    style: string
-    name: string
-    img: string
-    job: string
-}
+import {ContactCardProps} from './../../types/IUser'
 
 const ContactCard = ({id, style, name, job, img}: ContactCardProps) => {
     const returnImg = (img: string, name: string) => {
@@ -24,7 +17,7 @@ const ContactCard = ({id, style, name, job, img}: ContactCardProps) => {
     }
 
     const dispatch = useAppDispatch()
-    const {deleteContact} = userSlice.actions
+    const {deleteContact, changeContactInfoState, setCurrentPickedContact} = userSlice.actions
 
     const [cardMargin, setCardMargin] = useState(0)
     const card = useRef() as MutableRefObject<HTMLDivElement>
@@ -48,7 +41,15 @@ const ContactCard = ({id, style, name, job, img}: ContactCardProps) => {
     }
 
     return (
-        <div onMouseUp={() => {if(cardMargin >= 150) dispatch(deleteContact(id+1))}} onMouseDown={e => checkDivClick(e)} ref={card} style={{marginLeft: `-${cardMargin}px`, background: returnBackGround()}} className={style}>
+        <div onClick={() => {
+            dispatch(setCurrentPickedContact(id))
+            dispatch(changeContactInfoState(2))
+        }}
+        onMouseUp={() => {if(cardMargin >= 150) dispatch(deleteContact(id+1))}} 
+        onMouseDown={e => checkDivClick(e)} 
+        ref={card} 
+        style={{marginLeft: `-${cardMargin}px`, background: returnBackGround()}} 
+        className={style}>
             {returnImg(img, name)}
             <div>{returnShortName()}</div>
             <div></div>

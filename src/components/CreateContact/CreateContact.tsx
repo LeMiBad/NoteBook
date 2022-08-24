@@ -44,7 +44,6 @@ const CreateContact = () => {
             git: git.current.value
         }
         dispatch(createContact(newContact))
-        console.log(currentUserData)
     }
 
     return(

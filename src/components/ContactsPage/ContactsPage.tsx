@@ -9,14 +9,20 @@ import css from './ContactsPage.module.sass'
 const ContactsPage = () => {
 
     const dispatch = useAppDispatch()
-    const {unAuth,changeContactInfoState} = userSlice.actions
+    const {unAuth, changeContactInfoState} = userSlice.actions
     const {isAuth, currentUserData, contactInfoState} = useAppSelector(state => state.userReducer)
 
 
     const returnContactInfo = () => {
-        if(contactInfoState === 0) return <ContactInfo/>
+        if(contactInfoState === 0) return (
+            <div className={css.wrapper}>
+                <div>Выберите контакт</div>
+            </div>
+        )
         if(contactInfoState === 1) return <CreateContact/>
+        if(contactInfoState === 2) return <ContactInfo currentUserId={currentUserData.id}/>
     }
+
 
     if(isAuth === false) return <Navigate to={'/'}/>
     return (
