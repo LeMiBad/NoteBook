@@ -15,7 +15,7 @@ const ContactsPage = () => {
     const returnContactInfo = () => {
         if(contactInfoState === 0) return (
             <div className={css.wrapper}>
-                <div>Выберите контакт</div>
+                <div style={{textShadow: "0px 0px 20px #FFFFFF"}}>Выберите контакт</div>
             </div>
         )
         if(contactInfoState === 1) return <CreateContact/>
