@@ -14,7 +14,7 @@ const initialState: UserState = {
 }
 
 export const userSlice = createSlice({
-    name: 'user',
+    name: 'userSlice',
     initialState: initialState,
     reducers: {
         setUserAuthData(state, action: PayloadAction<Array<UserAuth>>) {
@@ -40,6 +40,7 @@ export const userSlice = createSlice({
         },
         unAuth(state){
             state.isAuth = false
+            state.contactInfoState = 0
         },
         changeContactInfoState(state, action) {
             state.contactInfoState = action.payload
