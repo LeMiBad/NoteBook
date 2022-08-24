@@ -1,16 +1,8 @@
-import css from './NotFoundPage.module.sass'
+import { Navigate } from 'react-router-dom'
 
 const NotFoundPage = () => {
     return (
-        <div className={css.background}>
-            <div className={css.authWrapper}>
-                <div className={css.mainText}>Member Login</div>
-                <div className={css.errorBlock}>
-                    <div className={css.errorName}>Ошибка</div>
-                    <div className={css.errorText}>Неправильно введён пароль</div>
-                </div>
-            </div>
-        </div>
+        <Navigate to={'/'}></Navigate>
     )
 }
 

@@ -1,8 +1,22 @@
+export interface UserData {
+    contacts: Array<Contact>
+    id: number
+}
+
 export interface UserAuth {
     id: number
     login: string
     password: string
 }
+
+export interface ContactCardProps {
+    id: number
+    style: string
+    name: string
+    img: string
+    job: string
+}
+
 
 export interface Contact {
     id: number
@@ -20,15 +34,13 @@ export interface Contact {
     git: string
 }
 
-export interface UserData {
-    contacts?: Array<Contact>
-    id: number
-}
-
-export interface ContactCardProps {
-    id: number
-    style: string
-    name: string
-    img: string
-    job: string
+export interface UserState {
+    usersAuthData: Array<UserAuth>
+    isAuth: boolean | Array<number>
+    isReg: boolean | Array<number>
+    currentUserData: UserData
+    currentUserDataSave: UserData
+    currentUserId: number
+    contactInfoState: number
+    currentPickedContact: number
 }

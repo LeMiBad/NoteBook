@@ -1,26 +1,13 @@
-import { useRef, MutableRefObject } from 'react'
-import { useAppDispatch, useAppSelector } from '../../hooks/redux'
+import { useState } from 'react'
+import { useAppDispatch } from '../../hooks/redux'
 import { userSlice } from '../../store/reducers/UserSlice'
 import css from './CreateContact.module.sass'
 
 const CreateContact = () => {
 
-    const {currentUserData} = useAppSelector(state => state.userReducer)
     const dispatch = useAppDispatch()
     const {createContact, changeContactInfoState} = userSlice.actions
-
-    const name = useRef() as MutableRefObject<HTMLInputElement>
-    const surname = useRef() as MutableRefObject<HTMLInputElement>
-    const fatherName = useRef() as MutableRefObject<HTMLInputElement>
-    const mail = useRef() as MutableRefObject<HTMLInputElement>
-    const phone = useRef() as MutableRefObject<HTMLInputElement>
-    const job = useRef() as MutableRefObject<HTMLInputElement>
-    const jobPlace = useRef() as MutableRefObject<HTMLInputElement>
-    const img = useRef() as MutableRefObject<HTMLInputElement>
-    const vk = useRef() as MutableRefObject<HTMLInputElement>
-    const tg = useRef() as MutableRefObject<HTMLInputElement>
-    const git = useRef() as MutableRefObject<HTMLInputElement>
-
+    const [values, setValues] = useState({name: '',surname: '',fatherName: '',mail: '',phone: '',job: '',jobPlace: '',img: '',vk: '',tg: '',git: ''})
 
     const phoneMask = (e: any) => {
         const regex = /(\d?)(\d{3})(\d{3})(\d{2})(\d{2})/g;
@@ -28,46 +15,50 @@ const CreateContact = () => {
         e.target.value = e.target.value.replace(regex, subst)
     }
 
-    const createNewContact = () => {
-        const newContact = {
-            id: currentUserData.contacts?.length,
-            name: name.current.value,
-            surname: surname.current.value,
-            fatherName: fatherName.current.value,
-            mail: mail.current.value,
-            phone: phone.current.value,
-            job: job.current.value,
-            jobPlace: jobPlace.current.value,
-            img: img.current.value,
-            vk: vk.current.value,
-            tg: tg.current.value,
-            git: git.current.value
-        }
-        dispatch(createContact(newContact))
-    }
-
     return(
         <>
             <div className={css.inputWrapper}>
-                <input ref={name} placeholder={'Имя'} />
-                <input ref={surname} placeholder='Фамилия' />
-                <input ref={fatherName} placeholder='Отчество' />
+                <input 
+                onChange={(e) => {const newValues = values; newValues.name = e.target.value; setValues(newValues)}} 
+                placeholder={'Имя'} />
+                <input
+                onChange={(e) => {const newValues = values; newValues.surname = e.target.value; setValues(newValues)}}
+                placeholder='Фамилия' />
+                <input
+                onChange={(e) => {const newValues = values; newValues.fatherName = e.target.value; setValues(newValues)}}
+                placeholder='Отчество' />
             </div>
             <div className={css.inputWrapper}>
-                <input ref={mail} placeholder='Почта' />
-                <input onBlur={phoneMask} ref={phone} placeholder='Номер' />
-                <input ref={job} placeholder='Проффесия' />
-                <input ref={jobPlace} placeholder='Место работы' />
-                <input ref={img} placeholder='Аватарка (ссылка на картинку)' />
+                <input
+                onChange={(e) => {const newValues = values; newValues.mail = e.target.value; setValues(newValues)}}
+                placeholder='Почта' />
+                <input
+                onChange={(e) => {const newValues = values; newValues.phone = e.target.value; setValues(newValues)}}
+                onBlur={phoneMask} placeholder='Номер' />
+                <input 
+                onChange={(e) => {const newValues = values; newValues.job = e.target.value; setValues(newValues)}}
+                placeholder='Проффесия' />
+                <input
+                onChange={(e) => {const newValues = values; newValues.jobPlace = e.target.value; setValues(newValues)}} 
+                placeholder='Место работы' />
+                <input
+                onChange={(e) => {const newValues = values; newValues.img = e.target.value; setValues(newValues)}}
+                placeholder='Аватарка (ссылка на картинку)' />
             </div>
             <div className={css.inputWrapper}>
-                <input ref={vk} placeholder='Вконтакте' />
-                <input ref={tg} placeholder='Telegram' />
-                <input ref={git} placeholder='GitHub' />
+                <input
+                onChange={(e) => {const newValues = values; newValues.vk = e.target.value; setValues(newValues)}}
+                placeholder='Вконтакте' />
+                <input
+                onChange={(e) => {const newValues = values; newValues.tg = e.target.value; setValues(newValues)}}
+                placeholder='Telegram' />
+                <input
+                onChange={(e) => {const newValues = values; newValues.git = e.target.value; setValues(newValues)}}
+                placeholder='GitHub' />
             </div>
             <div className={css.actionButtonWrapper}>
                 <button onClick={() => {dispatch(changeContactInfoState(0))}}>Отмена</button>
-                <button onClick={createNewContact}>Сохранить</button>
+                <button onClick={() => {dispatch(createContact(values))}}>Сохранить</button>
             </div>
         </>
     )

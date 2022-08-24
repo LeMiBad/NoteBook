@@ -38,7 +38,6 @@ const ContactInfo:FC<ContactInfoProps> = ({currentUserId}) => {
     if(contactData.jobPlace === '') contactData.jobPlace = 'Не указано'
     if(contactData.phone === '') contactData.phone = 'Не указано'
     if(contactData.mail === '') contactData.mail = 'Не указано'
-    console.log(contactData.vk)
 
     return (
         <div className={css.wrapper}>
@@ -53,9 +52,9 @@ const ContactInfo:FC<ContactInfoProps> = ({currentUserId}) => {
                 <div>Телефон: {contactData.phone}</div>
                 <div>Почта: {contactData.mail}</div>
                 <div className={css.linksWrapper}>
-                    <a href={`${contactData.vk}`}><img src={vk} alt='вк'></img></a>
-                    <a href={`${contactData.git}`}><img src={git} alt='гит'></img></a>
-                    <a href={`${contactData.tg}`}><img src={tg} alt='телеграм'></img></a>
+                    <a target='blank' href={`${contactData.vk}`}><img src={vk} alt='вк'></img></a>
+                    <a target='blank' href={`${contactData.git}`}><img src={git} alt='гит'></img></a>
+                    <a target='blank' href={`${contactData.tg}`}><img src={tg} alt='телеграм'></img></a>
                 </div>
             </div>
         </div>

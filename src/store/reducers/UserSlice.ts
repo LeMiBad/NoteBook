@@ -1,22 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import axios from "axios"
-import { UserAuth, UserData, } from "../../types/IUser"
-
-interface UserState {
-    usersAuthData: Array<UserAuth>
-    isAuth: boolean | Array<number>
-    isReg: boolean | Array<number>
-    currentUserData: UserData
-    currentUserId: number
-    contactInfoState: number
-    currentPickedContact: number
-}
+import { UserAuth, UserState, UserData, Contact } from "../../types/IUser"
 
 const initialState: UserState = {
     usersAuthData: [],
     isAuth: false,
     isReg: false,
     currentUserData: {id: 0, contacts: []},
+    currentUserDataSave: {id: 0, contacts: []},
     currentUserId: 0,
     contactInfoState: 0,
     currentPickedContact: 0
@@ -34,9 +25,18 @@ export const userSlice = createSlice({
         },
         setCurrentUserData(state, action: PayloadAction<UserData>) {
             state.currentUserData = action.payload
+            state.currentUserDataSave = state.currentUserData
         },
         setCurrentPickedContact(state, action) {
             state.currentPickedContact = action.payload+1
+        },
+        filterCurrentUserData(state, action) {
+            let newArr: Array<Contact> = []
+            state.currentUserData.contacts?.forEach((item) => {
+                if(item.name.toLowerCase().includes(action.payload) === true) newArr.push(item)
+            })
+            state.currentUserData.contacts = newArr
+            if(action.payload === ''){state.currentUserData = state.currentUserDataSave}
         },
         unAuth(state){
             state.isAuth = false
@@ -66,6 +66,7 @@ export const userSlice = createSlice({
             }
         },
         createContact(state, action) {
+            state.currentUserData = state.currentUserDataSave
             action.payload.id += 1
             state.currentUserData.contacts?.push(action.payload)
             state.currentUserData.contacts?.forEach((item, index) => item.id = index+1)
@@ -73,6 +74,7 @@ export const userSlice = createSlice({
             state.contactInfoState = 0
         },
         deleteContact(state, action){
+            state.currentUserData = state.currentUserDataSave
             const newState = state.currentUserData.contacts?.filter( item => item.id !== action.payload )
             state.currentUserData.contacts = newState
             state.currentUserData.contacts?.forEach((item, index) => item.id = index+1)

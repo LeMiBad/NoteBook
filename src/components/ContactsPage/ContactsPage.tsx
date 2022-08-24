@@ -9,9 +9,8 @@ import css from './ContactsPage.module.sass'
 const ContactsPage = () => {
 
     const dispatch = useAppDispatch()
-    const {unAuth, changeContactInfoState} = userSlice.actions
+    const {unAuth, changeContactInfoState, filterCurrentUserData} = userSlice.actions
     const {isAuth, currentUserData, contactInfoState} = useAppSelector(state => state.userReducer)
-
 
     const returnContactInfo = () => {
         if(contactInfoState === 0) return (
@@ -23,21 +22,21 @@ const ContactsPage = () => {
         if(contactInfoState === 2) return <ContactInfo currentUserId={currentUserData.id}/>
     }
 
-
     if(isAuth === false) return <Navigate to={'/'}/>
     return (
         <div className={css.background}>
             <div className={css.contactsPageWrapper}>
                 <div className={css.contacts}>
                     <div className={css.inputWrapper}>
-                        <input placeholder='Поиск'/>
+                        <input onBlur={(e) => {e.target.value = ''; dispatch(filterCurrentUserData(''))}} 
+                        onChange={(e) => {dispatch(filterCurrentUserData(e.target.value))}} placeholder='Поиск'/>
                     </div>
                     <div className={css.buttonWrapper}>
                         <button onClick={() => {dispatch(unAuth())}}>Выйти</button>
                         <button onClick={() => {dispatch(changeContactInfoState(1))}}>Добавить</button>
                     </div>
                     <div className={css.contactsItemWrapper}>
-                        {currentUserData.contacts?.map(((item, index) => <ContactCard key={index} id={index} style={css.contact} name={item.name} job={item.job} img={item.img}/>))}
+                        {currentUserData.contacts.map(((item, index) => <ContactCard key={index} id={item.id -1} style={css.contact} name={item.name} job={item.job} img={item.img}/>))}
                     </div>
                 </div>
                 <div className={css.contactsInfo}>
