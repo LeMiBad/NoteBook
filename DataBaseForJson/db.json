@@ -1,0 +1,118 @@
+{
+  "usersAuthData": [
+    {
+      "id": 1,
+      "login": "1",
+      "password": "1"
+    },
+    {
+      "id": 2,
+      "login": "Gor",
+      "password": "gor123"
+    },
+    {
+      "id": 3,
+      "login": "3",
+      "password": "3"
+    },
+    {
+      "id": 4,
+      "login": "2",
+      "password": "2"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "contacts": [
+        {
+          "id": 1,
+          "img": "https://sun9-83.userapi.com/impg/kp-hvOrhgufqPcu6FxDRTZxutCv4W3XmCm-LdQ/4pnCRKZWpAw.jpg?size=1600x1600&quality=95&sign=9df20f4875022ab194c0e536ac687dfc&type=album",
+          "name": "Леонид",
+          "surname": "Михеев",
+          "fatherName": "Александрович",
+          "mail": "79872121399.yandex@gmail.com",
+          "phone": "89600447093",
+          "status": "Всё будет хорошо",
+          "job": "Fronted-developer",
+          "jobPlace": "Takeoff Staff"
+        },
+        {
+          "id": 2,
+          "img": "https://sun9-76.userapi.com/impg/jgmVcdJKBDMESZb66FLWGEGejJa2uRl7vvk8Dw/rgb3x4TsCho.jpg?size=1600x1600&quality=95&sign=484abf675b3ca7b4d4fa01d96bd496e1&type=album",
+          "name": "Ярослав",
+          "surname": "Бобров",
+          "fatherName": "Игорьевич",
+          "mail": "yarik@gmail.com",
+          "phone": "89666447093",
+          "status": "Меня зовут Ярик",
+          "job": "Доставщик",
+          "jobPlace": "Суши-фабрика"
+        },
+        {
+          "id": 3,
+          "name": "Леонид",
+          "surname": "Титов",
+          "fatherName": "Романович",
+          "mail": "",
+          "phone": "",
+          "job": "Стич",
+          "jobPlace": "",
+          "img": "https://avatarko.ru/img/kartinka/33/multfilm_lyagushka_32117.jpg",
+          "vk": "",
+          "tg": "",
+          "git": ""
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "contacts": [
+        {
+          "id": 1,
+          "img": "https://sun9-83.userapi.com/impg/kp-hvOrhgufqPcu6FxDRTZxutCv4W3XmCm-LdQ/4pnCRKZWpAw.jpg?size=1600x1600&quality=95&sign=9df20f4875022ab194c0e536ac687dfc&type=album",
+          "name": "Леонид",
+          "surname": "Михеев",
+          "fatherName": "Александрович",
+          "mail": "79872121399.yandex@gmail.com",
+          "phone": "89600447093",
+          "status": "Всё будет хорошо",
+          "job": "Fronted-developer",
+          "jobPlace": "Takeoff Staff"
+        },
+        {
+          "id": 2,
+          "img": "https://sun9-76.userapi.com/impg/jgmVcdJKBDMESZb66FLWGEGejJa2uRl7vvk8Dw/rgb3x4TsCho.jpg?size=1600x1600&quality=95&sign=484abf675b3ca7b4d4fa01d96bd496e1&type=album",
+          "name": "Ярослав",
+          "surname": "Бобров",
+          "fatherName": "Игорьевич",
+          "mail": "yarik@gmail.com",
+          "phone": "89666447093",
+          "status": "Меня зовут Ярик",
+          "job": "Доставщик",
+          "jobPlace": "Суши-фабрика"
+        },
+        {
+          "id": 3,
+          "img": "https://sun9-33.userapi.com/impg/xXB896JaLAL-7xQJbXnzcwSpgRjeDooIuOKBKw/UPXHZIspMTs.jpg?size=720x720&quality=95&sign=1adb23e4b57e5234fef3b2f846602546&type=album",
+          "name": "Матвей",
+          "surname": "Красников",
+          "fatherName": "Генадьевич",
+          "mail": "matya@gmail.com",
+          "phone": "89266447093",
+          "status": "Меня зовут Матвей",
+          "job": "UP-X",
+          "jobPlace": "Дом"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "contacts": []
+    },
+    {
+      "id": 4,
+      "contacts": []
+    }
+  ]
+}
