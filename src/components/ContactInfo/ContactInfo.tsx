@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import { useAppSelector } from '../../hooks/redux'
 import css from './ContactInfo.module.sass'
-import vk from './vk.svg'
-import git from './git.svg'
-import tg from './tg.svg'
+import vk from './../../icons/vk.svg'
+import git from './../../icons/git.svg'
+import tg from './../../icons/tg.svg'
 
 interface ContactInfoProps {
     currentUserId: number
