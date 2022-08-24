@@ -1,15 +1,10 @@
-import { FC } from 'react'
 import { useAppSelector } from '../../hooks/redux'
 import css from './ContactInfo.module.sass'
 import vk from './../../icons/vk.svg'
 import git from './../../icons/git.svg'
 import tg from './../../icons/tg.svg'
 
-interface ContactInfoProps {
-    currentUserId: number
-}
-
-const ContactInfo:FC<ContactInfoProps> = ({currentUserId}) => {
+const ContactInfo = () => {
 
     const {currentPickedContact, currentUserData} = useAppSelector(state => state.userReducer)
 
@@ -30,7 +25,7 @@ const ContactInfo:FC<ContactInfoProps> = ({currentUserId}) => {
         }   
     })
     
-    if(contactData.vk === undefined) contactData.vk = '' 
+    if(contactData.vk === undefined) contactData.vk = '*' 
     if(contactData.tg === undefined) contactData.tg = '*' 
     if(contactData.git === undefined) contactData.git = '*'
     if(contactData.name === '') contactData.name = 'Безимянный'

@@ -19,7 +19,7 @@ const ContactsPage = () => {
             </div>
         )
         if(contactInfoState === 1) return <CreateContact/>
-        if(contactInfoState === 2) return <ContactInfo currentUserId={currentUserData.id}/>
+        if(contactInfoState === 2) return <ContactInfo/>
     }
 
     if(isAuth === false) return <Navigate to={'/'}/>

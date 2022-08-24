@@ -9,10 +9,10 @@ const CreateContact = () => {
     const {createContact, changeContactInfoState} = userSlice.actions
     const [values, setValues] = useState({name: '',surname: '',fatherName: '',mail: '',phone: '',job: '',jobPlace: '',img: '',vk: '',tg: '',git: ''})
 
-    const phoneMask = (e: any) => {
+    const phoneMask = (phoneNumber: string) => {
         const regex = /(\d?)(\d{3})(\d{3})(\d{2})(\d{2})/g;
         const subst = "+$1 ($2) $3-$4-$5";
-        e.target.value = e.target.value.replace(regex, subst)
+        return phoneNumber.replace(regex, subst)
     }
 
     return(
@@ -34,7 +34,7 @@ const CreateContact = () => {
                 placeholder='Почта' />
                 <input
                 onChange={(e) => {const newValues = values; newValues.phone = e.target.value; setValues(newValues)}}
-                onBlur={phoneMask} placeholder='Номер' />
+                onBlur={(e) => {e.target.value = phoneMask(e.target.value)}} placeholder='Номер' />
                 <input 
                 onChange={(e) => {const newValues = values; newValues.job = e.target.value; setValues(newValues)}}
                 placeholder='Проффесия' />

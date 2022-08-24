@@ -33,7 +33,7 @@ export const userSlice = createSlice({
         filterCurrentUserData(state, action) {
             let newArr: Array<Contact> = []
             state.currentUserData.contacts?.forEach((item) => {
-                if(item.name.toLowerCase().includes(action.payload) === true) newArr.push(item)
+                if(item.name.toLowerCase().includes(action.payload.toLowerCase()) === true) newArr.push(item)
             })
             state.currentUserData.contacts = newArr
             if(action.payload === ''){state.currentUserData = state.currentUserDataSave}
