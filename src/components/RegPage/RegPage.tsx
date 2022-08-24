@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import { userSlice } from '../../store/reducers/UserSlice'
 import ErrorMessageReg from './ErrorMessageReg'
 import css from './../AuthPage/AuthPage.module.sass'
-import { Navigate } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 
 const RegPage = () => {
     const {isReg} = useAppSelector(state => state.userReducer)
@@ -32,7 +32,7 @@ const RegPage = () => {
                     </form>
                 </div>
                 <button onClick={creatUserAcc}><div>СОЗДАТЬ АККАУНТ</div></button>
-                <button className={css.blue}><div>НАЗАД</div></button>
+                <Link to={'/'}><button className={css.blue}><div>НАЗАД</div></button></Link>
             </div>
         </div>
     )
