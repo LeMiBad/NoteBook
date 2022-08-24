@@ -1,11 +1,8 @@
 import { FC } from 'react'
 import css from './../AuthPage/AuthPage.module.sass'
 
-interface ErrorMessageRegProps{
-    isReg: boolean | Array<number>
-} 
 
-const ErrorMessageReg: FC<ErrorMessageRegProps> = ({isReg}) => {
+const ErrorMessageReg: FC<{isReg: boolean | Array<number>}> = ({isReg}) => {
     if (isReg === false || isReg === true) return <></>
 
     const returnErrorMessage = () => {

@@ -15,14 +15,10 @@ const RegPage = () => {
     const password = useRef() as MutableRefObject<HTMLInputElement>
     const passwordRepeat = useRef() as MutableRefObject<HTMLInputElement>
 
-
     const creatUserAcc = () => dispatch(createAccount([login.current.value, password.current.value, passwordRepeat.current.value]))
 
+    if(isReg === true) return <Navigate to={'/'}/>
 
-    if(isReg === true) {
-
-        return <Navigate to={'/'}/>
-    }
     return (
         <div className={css.background}>
             <div className={css.authWrapper}>
