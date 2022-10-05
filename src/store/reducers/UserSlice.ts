@@ -13,6 +13,8 @@ const initialState: UserState = {
     currentPickedContact: 0
 }
 
+const url = 'https://serverforauth.herokuapp.com/'
+
 export const userSlice = createSlice({
     name: 'userSlice',
     initialState: initialState,
@@ -71,7 +73,7 @@ export const userSlice = createSlice({
             action.payload.id += 1
             state.currentUserData.contacts?.push(action.payload)
             state.currentUserData.contacts?.forEach((item, index) => item.id = index+1)
-            axios.put(`http://localhost:3000/users/${state.currentUserId}`, state.currentUserData)
+            axios.put(`${url}users/${state.currentUserId}`, state.currentUserData)
             state.contactInfoState = 0
         },
         deleteContact(state, action){
@@ -79,7 +81,7 @@ export const userSlice = createSlice({
             const newState = state.currentUserData.contacts?.filter( item => item.id !== action.payload )
             state.currentUserData.contacts = newState
             state.currentUserData.contacts?.forEach((item, index) => item.id = index+1)
-            axios.put(`http://localhost:3000/users/${state.currentUserId}`, state.currentUserData)
+            axios.put(`${url}users/${state.currentUserId}`, state.currentUserData)
         },
         createAccount(state, action){
             let isHave = 0
@@ -93,8 +95,8 @@ export const userSlice = createSlice({
             if(action.payload[0] === '' && action.payload[1] === '' && action.payload[2] === '') state.isReg = false
 
             if(action.payload[1] === action.payload[2] && isHave === 0 && action.payload[2] !== ''){
-                axios.post(`http://localhost:3000/usersAuthData`, {id: (state.usersAuthData.length + 1), login: action.payload[0], password: action.payload[1]})
-                axios.post(`http://localhost:3000/users`, {id: (state.usersAuthData.length + 1), contacts: []})
+                axios.post(`${url}usersAuthData`, {id: (state.usersAuthData.length + 1), login: action.payload[0], password: action.payload[1]})
+                axios.post(`${url}users`, {id: (state.usersAuthData.length + 1), contacts: []})
                 state.isReg = true
             }
         },

@@ -7,6 +7,8 @@ import axios from 'axios'
 import ErrorMessageAuth from './ErrorMessageAuth'
 
 const AuthPage = () => {
+
+    const url = 'https://serverforauth.herokuapp.com/'
     const {isAuth, currentUserId} = useAppSelector(state => state.userReducer)
     const dispatch = useAppDispatch()
     const {setUserAuthData, resetIsReg, setCurrentUserData, authCheck} = userSlice.actions
@@ -15,7 +17,7 @@ const AuthPage = () => {
     const password = useRef() as MutableRefObject<HTMLInputElement>
 
     useEffect(() => {
-        axios.get('http://localhost:3000/usersAuthData')
+        axios.get(`${url}usersAuthData`)
         .then(data => dispatch(setUserAuthData(data.data)))
     }, [dispatch, isAuth, setUserAuthData])
 
@@ -26,7 +28,7 @@ const AuthPage = () => {
     const setUserAuth = () => dispatch(authCheck([login.current.value, password.current.value]))
 
     if(isAuth === true) {
-        axios.get(`http://localhost:3000/users/${currentUserId}`)
+        axios.get(`${url}users/${currentUserId}`)
         .then(res => dispatch(setCurrentUserData(res.data)))
         return <Navigate to={'/contacts'}/>
     }
