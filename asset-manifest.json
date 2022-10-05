@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/NoteBook/static/css/main.a5770af8.css",
-    "main.js": "/NoteBook/static/js/main.e746bda2.js",
-    "static/media/git.svg": "/NoteBook/static/media/git.30feb371b00abf636bfc97c2c325531a.svg",
-    "static/media/vk.svg": "/NoteBook/static/media/vk.60292db7504d0021173a2b6ef37bbf50.svg",
-    "static/media/tg.svg": "/NoteBook/static/media/tg.ef140e438b7cabdbc549eec42815a237.svg",
+    "main.css": "/NoteBook/static/css/main.d53adeb1.css",
+    "main.js": "/NoteBook/static/js/main.fe4dba03.js",
+    "static/media/git.svg": "/NoteBook/static/media/git.30feb371b00abf636bfc.svg",
+    "static/media/vk.svg": "/NoteBook/static/media/vk.60292db7504d0021173a.svg",
+    "static/media/tg.svg": "/NoteBook/static/media/tg.ef140e438b7cabdbc549.svg",
     "index.html": "/NoteBook/index.html",
-    "main.a5770af8.css.map": "/NoteBook/static/css/main.a5770af8.css.map",
-    "main.e746bda2.js.map": "/NoteBook/static/js/main.e746bda2.js.map"
+    "main.d53adeb1.css.map": "/NoteBook/static/css/main.d53adeb1.css.map",
+    "main.fe4dba03.js.map": "/NoteBook/static/js/main.fe4dba03.js.map"
   },
   "entrypoints": [
-    "static/css/main.a5770af8.css",
-    "static/js/main.e746bda2.js"
+    "static/css/main.d53adeb1.css",
+    "static/js/main.fe4dba03.js"
   ]
 }
