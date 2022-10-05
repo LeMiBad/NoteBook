@@ -1,8 +1,5 @@
 import { useAppSelector } from '../../hooks/redux'
 import css from './ContactInfo.module.sass'
-import vk from './../../icons/vk.svg'
-import git from './../../icons/git.svg'
-import tg from './../../icons/tg.svg'
 
 const ContactInfo = () => {
 
@@ -47,9 +44,9 @@ const ContactInfo = () => {
                 <div>Телефон: {contactData.phone}</div>
                 <div>Почта: {contactData.mail}</div>
                 <div className={css.linksWrapper}>
-                    <a target='blank' href={`${contactData.vk}`}><img src={vk} alt='вк'></img></a>
-                    <a target='blank' href={`${contactData.git}`}><img src={git} alt='гит'></img></a>
-                    <a target='blank' href={`${contactData.tg}`}><img src={tg} alt='телеграм'></img></a>
+                    <a target='blank' href={`${contactData.vk}`}><div className={css.vk}></div></a>
+                    <a target='blank' href={`${contactData.git}`}><div className={css.tg}></div></a>
+                    <a target='blank' href={`${contactData.tg}`}><div className={css.git}></div></a>
                 </div>
             </div>
         </div>
